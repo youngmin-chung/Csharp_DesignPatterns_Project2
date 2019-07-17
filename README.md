@@ -1,2 +1,2 @@
-# INFO3137_Project2
+# INFO3137
 Project2
