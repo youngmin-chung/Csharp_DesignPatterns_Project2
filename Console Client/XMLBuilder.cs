@@ -12,7 +12,7 @@ namespace INFO3137_Project2
         /// method
         /// </summary>
         private int depth = 0;
-        private Stack<IComposite> stack;
+        private Queue<IComposite> queue;
         private XMLBranch root;
 
         /// <summary>
@@ -20,29 +20,29 @@ namespace INFO3137_Project2
         /// </summary>
         public XMLBuilder()
         {
-            stack = new Stack<IComposite>();
+            queue = new Queue<IComposite>();
             root = new XMLBranch("root");
-            stack.Push(root);
+            queue.Enqueue(root);
         }
         public void BuildBranch(string name)
         {
             XMLBranch branch = new XMLBranch(name);
             depth++;
 
-            stack.Peek().AddChild(branch);
-            stack.Push(branch);
+            queue.Peek().AddChild(branch);
+            queue.Enqueue(branch);
         }
         public void BuildLeaf(string name, string content)
         {
             XMLLeaf leaf = new XMLLeaf(name, content);
-            stack.Peek().AddChild(leaf);
+            queue.Peek().AddChild(leaf);
         }
         public void CloseBranch()
         {
             depth--;
-            if (stack.Count() > 1)
+            if (queue.Count() > 1)
             {
-                stack.Pop();
+                queue.Dequeue();
             }
         }
         public IComposite GetDocument()

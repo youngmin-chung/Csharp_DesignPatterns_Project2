@@ -12,7 +12,7 @@ namespace INFO3137_Project2
         /// method
         /// </summary>
         private int depth = 1;
-        private Stack<IComposite> stack;
+        private Queue<IComposite> queue;
         JSONBranch root;
 
         /// <summary>
@@ -20,29 +20,29 @@ namespace INFO3137_Project2
         /// </summary>
         public JSONBuilder()
         {
-            stack = new Stack<IComposite>();
+            queue = new Queue<IComposite>();
             root = new JSONBranch("root");
-            stack.Push(root);
+            queue.Enqueue(root);
         }
         public void BuildBranch(string name)
         {
             JSONBranch branch = new JSONBranch(name);
             depth++;
 
-            stack.Peek().AddChild(branch);
-            stack.Push(branch);
+            queue.Peek().AddChild(branch);
+            queue.Enqueue(branch);
         }
         public void BuildLeaf(string name, string content)
         {
             JSONLeaf leaf = new JSONLeaf(name, content);
-            stack.Peek().AddChild(leaf);
+            queue.Peek().AddChild(leaf);
         }
         public void CloseBranch()
         {
             depth--;
-            if (stack.Count() > 1)
+            if (queue.Count() > 1)
             {
-                stack.Pop();
+                queue.Dequeue();
             }
         }
         public IComposite GetDocument()
