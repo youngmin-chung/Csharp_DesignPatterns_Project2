@@ -7,7 +7,7 @@ namespace INFO3137_Project2
         /// <summary>
         /// method
         /// </summary>
-        private Component comp;
+        private Branch branch;
         private IBuilder iBuilder;
 
         /// <summary>
@@ -15,31 +15,36 @@ namespace INFO3137_Project2
         /// </summary>
         public Director(IBuilder builder)
         {
-            comp = new Component();
+            branch = new Branch();
             iBuilder = builder;
         }
-
+        
         public void BuildBranch()
         {
-            iBuilder.BuildBranch(comp.GetBranch());
+            iBuilder.BuildBranch(branch.GetBranch());
         }
+
         public void BuildLeaf()
         {
-            Leaf<string, string> leaf = comp.GetLeaf();
+            Leaf<string, string> leaf = branch.GetLeaf();
             iBuilder.BuildLeaf(leaf.GetKey(), leaf.GetValue());
         }
+
         public void CloseBranch()
         {
             iBuilder.CloseBranch();
         }
 
+        /// <summary>
+        /// Printing a branchosite should return a string representing its full content
+        /// </summary>
         public void Print()
         {
             Console.WriteLine(iBuilder.GetDocument().Print(0));
         }
     } // end class
 
-    public class Component
+    public class Branch
     {
         /// <summary>
         /// method
@@ -48,9 +53,9 @@ namespace INFO3137_Project2
         private static Leaf<string, string> leaf;
 
         /// <summary>
-        /// C'tor no-arg
+        /// Branches can have children, but no text content
         /// </summary>
-        public Component()
+        public Branch()
         {
             leaf = new Leaf<string, string>();
         }
@@ -81,7 +86,7 @@ namespace INFO3137_Project2
         private TValue tValue { get; set; }
 
         /// <summary>
-        /// default c'tor
+        /// Leaves can have text content, but no children
         /// </summary>
         public Leaf() { }
 

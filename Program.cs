@@ -39,7 +39,7 @@ namespace INFO3137_Project2
         {
             Console.WriteLine("Document Builder Console Client - @Copyright from Youngmin Chung\n");
 
-            Component comp = new Component();
+            Branch branch = new Branch();
             Director myDirector = null;
             bool isBool = false;
 
@@ -88,6 +88,7 @@ namespace INFO3137_Project2
                     // exit menu in Usage
                     else if (commandList[0].ToLower() == "exit")
                     {
+                        Console.WriteLine("Thank you for using this console");
                         Environment.Exit(0);
                     }
                                         
@@ -120,7 +121,7 @@ namespace INFO3137_Project2
                     {
                         if (isBool)
                         {
-                            comp.SetBranch(commandList);
+                            branch.SetBranch(commandList);
                             myDirector.BuildBranch();
                         }
                         else
@@ -140,7 +141,7 @@ namespace INFO3137_Project2
                     {
                         if (isBool)
                         {
-                            comp.SetLeaf(commandList);
+                            branch.SetLeaf(commandList);
                             myDirector.BuildLeaf();
                         }
                         else

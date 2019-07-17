@@ -13,7 +13,7 @@ namespace INFO3137_Project2
         /// </summary>
         private int depth = 1;
         private Stack<IComposite> stack;
-        JSONComponent root;
+        JSONBranch root;
 
         /// <summary>
         /// C'tor no-arg
@@ -21,16 +21,16 @@ namespace INFO3137_Project2
         public JSONBuilder()
         {
             stack = new Stack<IComposite>();
-            root = new JSONComponent("root");
+            root = new JSONBranch("root");
             stack.Push(root);
         }
         public void BuildBranch(string name)
         {
-            JSONComponent component = new JSONComponent(name);
+            JSONBranch branch = new JSONBranch(name);
             depth++;
 
-            stack.Peek().AddChild(component);
-            stack.Push(component);
+            stack.Peek().AddChild(branch);
+            stack.Push(branch);
         }
         public void BuildLeaf(string name, string content)
         {
@@ -51,8 +51,8 @@ namespace INFO3137_Project2
         }
     } // end class
 
-    // JSONComponent class
-    public class JSONComponent : IComposite
+    // JSONBranch class
+    public class JSONBranch : IComposite
     {
         /// <summary>
         /// method
@@ -63,7 +63,7 @@ namespace INFO3137_Project2
         /// <summary>
         /// C'tor 1 arg
         /// </summary>
-        public JSONComponent(string key)
+        public JSONBranch(string key)
         {
             strKey = key;
             children = new List<IComposite>();
@@ -128,7 +128,7 @@ namespace INFO3137_Project2
         }
         public string Print(int depth)
         {
-            //tab (\t) takes bigger space than example console's. So, I each tabbing is as same as example's by using .PadRight() function. 
+            //tab (\t) takes bigger space than Kyle's example. So, each tabbing is as same as example's by using .PadRight() function. 
             //string space = "\t";
             string space = "";
             string tabs = String.Concat(Enumerable.Repeat(space.PadRight(4), depth));
