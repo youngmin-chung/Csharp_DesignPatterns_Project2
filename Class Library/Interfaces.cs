@@ -1,4 +1,12 @@
-﻿namespace INFO3137_Project2
+﻿/*
+ * Program:         INFO3137_Project2 (Document Builder Console Client)
+ * Module:          Interfaces.cs
+ * Date:            July 17, 2019
+ * Author:          Youngmin Chung
+ * Description:                  
+ */
+
+namespace INFO3137_Project2
 {
     public interface IComposite
     {
@@ -21,4 +29,3 @@
         void CloseBranch();
     }
 }
-

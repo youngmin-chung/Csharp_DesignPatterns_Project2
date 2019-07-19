@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Program:         INFO3137_Project2 (Document Builder Console Client)
+ * Module:          Director.cs
+ * Date:            July 17, 2019
+ * Author:          Youngmin Chung
+ * Description:                  
+ */
+
+using System;
 
 namespace INFO3137_Project2
 {

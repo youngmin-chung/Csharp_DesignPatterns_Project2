@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Program:         INFO3137_Project2 (Document Builder Console Client)
+ * Module:          Progream.cs
+ * Date:            July 17, 2019
+ * Author:          Youngmin Chung
+ * Description:                  
+ */
+
+using System;
 using System.Linq;
 
 namespace INFO3137_Project2
@@ -89,7 +97,7 @@ namespace INFO3137_Project2
                     else if (commandList[0].ToLower() == "exit")
                     {
                         Console.WriteLine("Thank you for using this console");
-                        Environment.Exit(0);
+                        System.Environment.Exit(1);
                     }
                                         
                     else
@@ -104,12 +112,14 @@ namespace INFO3137_Project2
                     {
                         if (commandList[1].ToLower() == "json")
                         {
-                            myDirector = new Director(new JSONBuilder());
+                            JSONBuilder json = new JSONBuilder();
+                            myDirector = new Director(json);
                             isBool = true;
                         }
                         else if (commandList[1].ToLower() == "xml")
                         {
-                            myDirector = new Director(new XMLBuilder());
+                            XMLBuilder xml = new XMLBuilder();
+                            myDirector = new Director(xml);
                             isBool = true;
                         }
                         else

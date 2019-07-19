@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+ * Program:         INFO3137_Project2 (Document Builder Console Client)
+ * Module:          XMLBuilder.cs
+ * Date:            July 17, 2019
+ * Author:          Youngmin Chung
+ * Description:                  
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,7 +20,15 @@ namespace INFO3137_Project2
         /// method
         /// </summary>
         private int depth = 0;
-        private Queue<IComposite> queue;
+
+        /// <summary>
+        /// In-class we used a Queue or List to do this. I chose "LinkedList".
+        /// </summary>
+        private LinkedList<IComposite> linked;
+
+        /// <summary>
+        /// On creation, should create a root Branch for the document
+        /// </summary>
         private XMLBranch root;
 
         /// <summary>
@@ -20,31 +36,35 @@ namespace INFO3137_Project2
         /// </summary>
         public XMLBuilder()
         {
-            queue = new Queue<IComposite>();
+            linked = new LinkedList<IComposite>();
             root = new XMLBranch("root");
-            queue.Enqueue(root);
+            linked.AddFirst(root);
         }
         public void BuildBranch(string name)
         {
             XMLBranch branch = new XMLBranch(name);
             depth++;
 
-            queue.Peek().AddChild(branch);
-            queue.Enqueue(branch);
+            linked.First().AddChild(branch);
+            linked.AddFirst(branch);
         }
         public void BuildLeaf(string name, string content)
         {
             XMLLeaf leaf = new XMLLeaf(name, content);
-            queue.Peek().AddChild(leaf);
+            linked.First().AddChild(leaf);
         }
         public void CloseBranch()
         {
             depth--;
-            if (queue.Count() > 1)
+            if (linked.Count() > 1)
             {
-                queue.Dequeue();
+                linked.RemoveFirst();
             }
         }
+
+        /// <summary>
+        /// GetDocument returns the root node
+        /// </summary>
         public IComposite GetDocument()
         {
             return root;
