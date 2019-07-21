@@ -27,9 +27,9 @@ namespace INFO3137_Project2
         private LinkedList<IComposite> linked;
 
         /// <summary>
-        /// On creation, should create a root Branch for the document
+        /// declare root
         /// </summary>
-        JSONBranch root;
+        JSONBranch root = new JSONBranch("root");
 
         /// <summary>
         /// On creation, should create a root Branch for the document
@@ -37,7 +37,6 @@ namespace INFO3137_Project2
         public JSONBuilder()
         {
             linked = new LinkedList<IComposite>();
-            root = new JSONBranch("root");
             linked.AddFirst(root);
         }
 

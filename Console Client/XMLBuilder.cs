@@ -26,9 +26,9 @@ namespace INFO3137_Project2
         private LinkedList<IComposite> linked;
 
         /// <summary>
-        /// On creation, should create a root Branch for the document
+        /// declare root
         /// </summary>
-        private XMLBranch root;
+        private XMLBranch root = new XMLBranch("root");
 
         /// <summary>
         /// On creation, should create a root Branch for the document
@@ -36,7 +36,6 @@ namespace INFO3137_Project2
         public XMLBuilder()
         {
             linked = new LinkedList<IComposite>();
-            root = new XMLBranch("root");
             linked.AddFirst(root);
         }
 
