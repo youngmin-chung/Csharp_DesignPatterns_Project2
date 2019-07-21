@@ -17,7 +17,7 @@ namespace INFO3137_Project2
     public class JSONBuilder : IBuilder
     {
         /// <summary>
-        /// method
+        /// an int for depth will add tabs to the beginning of each line that is printed.
         /// </summary>
         private int depth = 1;
 
@@ -32,7 +32,7 @@ namespace INFO3137_Project2
         JSONBranch root;
 
         /// <summary>
-        /// C'tor no-arg
+        /// On creation, should create a root Branch for the document
         /// </summary>
         public JSONBuilder()
         {
@@ -40,6 +40,11 @@ namespace INFO3137_Project2
             root = new JSONBranch("root");
             linked.AddFirst(root);
         }
+
+        /// <summary>
+        /// BuildBranch
+        /// When creating a Composite, the builder should maintain a reference to the last opened Branch
+        /// </summary>
         public void BuildBranch(string name)
         {
             JSONBranch branch = new JSONBranch(name);
@@ -48,11 +53,20 @@ namespace INFO3137_Project2
             linked.First().AddChild(branch);
             linked.AddFirst(branch);
         }
+
+        /// <summary>
+        /// BuildLeaf
+        /// </summary>
         public void BuildLeaf(string name, string content)
         {
             JSONLeaf leaf = new JSONLeaf(name, content);
             linked.First().AddChild(leaf);
         }
+
+        /// <summary>
+        /// CloseBranch
+        /// When CloseBranch is called, the maintained Branch reference should be changed to the current Branch's parent
+        /// </summary>
         public void CloseBranch()
         {
             depth--;
@@ -71,17 +85,17 @@ namespace INFO3137_Project2
         }
     } // end class
 
-    // JSONBranch class
+    /// <summary>
+    /// Needs a concrete class for both JSON and XML
+    /// Needs to have separate implementations for Branch
+    /// </summary>
     public class JSONBranch : IComposite
     {
-        /// <summary>
-        /// method
-        /// </summary>
         private string strKey;
         private List<IComposite> children;
 
         /// <summary>
-        /// C'tor 1 arg
+        /// Branches can have children, but no text content
         /// </summary>
         public JSONBranch(string key)
         {
@@ -92,6 +106,12 @@ namespace INFO3137_Project2
         {
             children.Add(child);
         }
+
+        /// <summary>
+        /// Printing a composite should return a string representing its full content
+        /// The print method accepts an int for depth. 
+        /// Branch : print all of their child nodes
+        /// </summary>
         public string Print(int depth)
         {
             //tab (\t) takes bigger space than example console's. So, I each tabbing is as same as example's by using .PadRight() function. 
@@ -129,23 +149,29 @@ namespace INFO3137_Project2
         }
     } // end class
 
-    // JSONLeaf class
+    /// <summary>
+    /// Needs a concrete class for both JSON and XML
+    /// Needs to have separate implementations for Leaf
+    /// </summary>
     public class JSONLeaf : IComposite
     {
-        /// <summary>
-        /// method
-        /// </summary>
         private string strKey;
         private string strValue;
 
         /// <summary>
-        /// C'tor 2 args
+        /// Leaves can have text content, but no children
         /// </summary>
         public JSONLeaf(string key, string value)
         {
             strKey = key;
             strValue = value;
         }
+
+        /// <summary>
+        /// Printing a composite should return a string representing its full content
+        /// The print method accepts an int for depth. This will add tabs to the beginning of each line that is printed.
+        /// Leaf: only print their content
+        /// </summary>
         public string Print(int depth)
         {
             //tab (\t) takes bigger space than Kyle's example. So, each tabbing is as same as example's by using .PadRight() function. 

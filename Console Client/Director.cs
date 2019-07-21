@@ -10,11 +10,11 @@ using System;
 
 namespace INFO3137_Project2
 {
+    /// <summary>
+    /// Director should be implemented for the Console client
+    /// </summary>
     public class Director : IDirector
     {
-        /// <summary>
-        /// method
-        /// </summary>
         private Branch branch;
         private IBuilder iBuilder;
 
@@ -54,9 +54,6 @@ namespace INFO3137_Project2
 
     public class Branch
     {
-        /// <summary>
-        /// method
-        /// </summary>
         private static string branch;
         private static Leaf<string, string> leaf;
 

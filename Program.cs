@@ -28,14 +28,14 @@ namespace INFO3137_Project2
             Console.Write("> ");
         }// end class
 
-        // Invalid_Input() class
+        // Invalid_Input() class : Enters invalid input
         public static void Invalid_Input()
         {
             Console.WriteLine("Invalid input. For Usage, type 'Help'");
             Console.Write("> ");
         }// end class
 
-        // Error() class
+        // Error() class : Has not set the document type
         public static void Error()
         {
             Console.WriteLine("Error. Mode has not been set. For usage, type 'Help'");
@@ -45,7 +45,7 @@ namespace INFO3137_Project2
         // Main class
         static void Main(string[] args)
         {
-            Console.WriteLine("Document Builder Console Client - @Copyright from Youngmin Chung\n");
+            Console.WriteLine("Document Builder Console Client - @2019, Youngmin Chung\n");
 
             Branch branch = new Branch();
             Director myDirector = null;
