@@ -114,7 +114,8 @@ namespace INFO3137_Project2
             //tab (\t) takes bigger space than example console's. So, I each tabbing is as same as example's by using .PadRight() function. 
             //string space = "\t";
             string space = "";
-            string tabs = String.Concat(Enumerable.Repeat(space.PadRight(4), depth));
+            //number_of_spaces_or_tabs * depth
+            string tabs = space.PadRight(4 * depth);
             string text = $"{tabs}<{strKey}>\n";
 
             foreach (var child in children)

@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace INFO3137_Project2
 {
     // JSONBuilder class
@@ -116,7 +115,8 @@ namespace INFO3137_Project2
             //tab (\t) takes bigger space than example console's. So, I each tabbing is as same as example's by using .PadRight() function. 
             //string space = "\t";
             string space = "";
-            string tabs = String.Concat(Enumerable.Repeat(space.PadRight(4), depth));
+            //number_of_spaces_or_tabs * depth
+            string tabs = space.PadRight(4 * depth); 
             string text = "";
 
             /// <summary>
@@ -128,7 +128,7 @@ namespace INFO3137_Project2
             }
             else
             {
-                text += $"{tabs}\'{strKey}\': \n{tabs}{{\n";
+                text += $"{tabs}\'{strKey}\' : \n{tabs}{{\n";
             }
 
             foreach (var child in children)
@@ -177,7 +177,7 @@ namespace INFO3137_Project2
             //string space = "\t";
             string space = "";
             string tabs = String.Concat(Enumerable.Repeat(space.PadRight(4), depth));
-            return $"{tabs}\'{strKey}\':\'{strValue}\'";
+            return $"{tabs}\'{strKey}\' : \'{strValue}\'";
         }
         public void AddChild(IComposite child) {} // leaf do not have children
     } // end class

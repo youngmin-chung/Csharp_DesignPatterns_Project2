@@ -18,20 +18,24 @@ namespace INFO3137_Project2
         private Branch branch;
         private IBuilder iBuilder;
 
-        /// <summary>
-        /// C'tor 1 arg
-        /// </summary>
+
         public Director(IBuilder builder)
         {
             branch = new Branch();
             iBuilder = builder;
         }
-        
+
+        /// <summary>
+        /// BuildBranch()
+        /// </summary>
         public void BuildBranch()
         {
             iBuilder.BuildBranch(branch.GetBranch());
         }
 
+        /// <summary>
+        /// BuildLeaf()
+        /// </summary>
         public void BuildLeaf()
         {
             Leaf<string, string> leaf = branch.GetLeaf();
@@ -44,7 +48,7 @@ namespace INFO3137_Project2
         }
 
         /// <summary>
-        /// Printing a branchosite should return a string representing its full content
+        /// GetDocument returns the root node
         /// </summary>
         public void Print()
         {
@@ -110,4 +114,4 @@ namespace INFO3137_Project2
         public TValue GetValue() { return tValue; }
         public void SetValue(TValue value) { tValue = value; }
     } // end class
-}
+}// end namespace
