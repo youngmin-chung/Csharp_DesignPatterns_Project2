@@ -38,7 +38,7 @@ namespace INFO3137_Project2
         /// </summary>
         public void BuildLeaf()
         {
-            Leaf<string, string> leaf = branch.GetLeaf();
+            Leaf leaf = branch.GetLeaf();
             iBuilder.BuildLeaf(leaf.GetKey(), leaf.GetValue());
         }
 
@@ -59,14 +59,14 @@ namespace INFO3137_Project2
     public class Branch
     {
         private static string branch;
-        private static Leaf<string, string> leaf;
+        private static Leaf leaf;
 
         /// <summary>
         /// Branches can have children, but no text content
         /// </summary>
         public Branch()
         {
-            leaf = new Leaf<string, string>();
+            leaf = new Leaf();
         }
 
         /// <summary>
@@ -78,40 +78,37 @@ namespace INFO3137_Project2
             branch = props[1];
         }
 
-        public Leaf<string, string> GetLeaf() { return leaf; }
+        public Leaf GetLeaf() { return leaf; }
         public void SetLeaf(string[] props)
         {
-            leaf = new Leaf<string, string>(props[1], props[2]);
+            leaf = new Leaf(props[1], props[2]);
         }
     } // end class
 
     // Leaf class
-    public class Leaf<TKey, TValue>
+    public class Leaf
     {
-        /// <summary>
-        /// method
-        /// </summary>
-        private TKey tKey { get; set; }
-        private TValue tValue { get; set; }
+        private string strKey;
+        private string strValue;
 
-        /// <summary>
-        /// Leaves can have text content, but no children
-        /// </summary>
-        public Leaf() { }
+        public Leaf() {}
 
-        public Leaf(TKey key, TValue val)
+        public Leaf (string key, string value)
         {
-            tKey = key;
-            tValue = val;
+            this.strKey = key;
+            this.strValue = value;
         }
 
-        /// <summary>
-        /// Getter and Setter
-        /// </summary>
-        public TKey GetKey() { return tKey; }
-        public void SetKey(TKey key) { tKey = key; }
+        public string GetKey() { return strKey; }
+        public void SetKey(string[] key)
+        {
+            this.strKey = key[0];
+        }
 
-        public TValue GetValue() { return tValue; }
-        public void SetValue(TValue value) { tValue = value; }
-    } // end class
+        public string GetValue() { return strValue; }
+        public void SetValue(string[] value)
+        {
+            this.strValue = value[1];
+        }
+    }
 }// end namespace
