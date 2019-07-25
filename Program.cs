@@ -8,7 +8,6 @@
 
 using System;
 using System.Linq;
-using ConsoleClient;
 
 namespace INFO3137_Project2
 {
@@ -32,14 +31,14 @@ namespace INFO3137_Project2
         // Invalid_Input() class : Enters invalid input
         public static void Invalid_Input()
         {
-            Console.WriteLine("Invalid input. For Usage, type 'Help'");
+            Console.WriteLine("\nInvalid input. For Usage, type 'Help'\n");
             Console.Write("> ");
         }// end class
 
         // Error() class : Has not set the document type
         public static void Error()
         {
-            Console.WriteLine("Error. Mode has not been set. For usage, type 'Help'");
+            Console.WriteLine("\nError. Mode has not been set. For usage, type 'Help'\n");
             Console.Write("> ");
         }// end class
 
@@ -47,8 +46,6 @@ namespace INFO3137_Project2
         static void Main(string[] args)
         {
             Console.WriteLine("Document Builder Console Client - @2019, Youngmin Chung\n");
-
-            Branch branch = new Branch();
             Director myDirector = null;
             bool done = false;
 
@@ -108,17 +105,19 @@ namespace INFO3137_Project2
                 }
                 else if (commandList.Count() == 2)
                 {
-                    Console.Write("> ");
+                    
                     if (commandList[0].ToLower() == "mode")
                     {
                         if (commandList[1].ToLower() == "json")
                         {
+                            Console.Write("> ");
                             JSONBuilder json = new JSONBuilder();
                             myDirector = new Director(json);
                             done = true;
                         }
                         else if (commandList[1].ToLower() == "xml")
                         {
+                            Console.Write("> ");
                             XMLBuilder xml = new XMLBuilder();
                             myDirector = new Director(xml);
                             done = true;
@@ -132,7 +131,8 @@ namespace INFO3137_Project2
                     {
                         if (done)
                         {
-                            branch.SetBranch(commandList);
+                            Console.Write("> ");
+                            myDirector.SetBranch(commandList);
                             myDirector.BuildBranch();
                         }
                         else
@@ -147,12 +147,13 @@ namespace INFO3137_Project2
                 }
                 else if (commandList.Count() == 3)
                 {
-                    Console.Write("> ");
+                    
                     if (commandList[0].ToLower() == "leaf")
                     {
                         if (done)
                         {
-                            branch.SetLeaf(commandList);
+                            Console.Write("> ");
+                            myDirector.SetLeaf(commandList);
                             myDirector.BuildLeaf();
                         }
                         else
@@ -167,7 +168,6 @@ namespace INFO3137_Project2
                 }
                 else
                 {
-                    Console.Write("> ");
                     Invalid_Input();
                 }
             } while (true);
