@@ -9,8 +9,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ClassLibrary;
 
-namespace INFO3137_Project2
+namespace ConsoleClient
 {
     // JSONBuilder class
     public class JSONBuilder : IBuilder

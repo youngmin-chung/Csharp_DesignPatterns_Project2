@@ -6,7 +6,7 @@
  * Description:                  
  */
 
-namespace INFO3137_Project2
+namespace ClassLibrary
 {
     public interface IComposite
     {

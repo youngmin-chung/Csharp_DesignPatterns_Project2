@@ -7,8 +7,9 @@
  */
 
 using System;
+using ClassLibrary;
 
-namespace INFO3137_Project2
+namespace ConsoleClient
 {
     /// <summary>
     /// Director should be implemented for the Console client
@@ -86,29 +87,30 @@ namespace INFO3137_Project2
     } // end class
 
     // Leaf class
+
     public class Leaf
     {
-        private string strKey;
-        private string strValue;
+        private string key;
+        private string value;
 
         public Leaf() {}
 
         public Leaf (string key, string value)
         {
-            this.strKey = key;
-            this.strValue = value;
+            this.key = key;
+            this.value = value;
         }
 
-        public string GetKey() { return strKey; }
+        public string GetKey() { return key; }
         public void SetKey(string[] key)
         {
-            this.strKey = key[0];
+            this.key = key[0];
         }
 
-        public string GetValue() { return strValue; }
+        public string GetValue() { return value; }
         public void SetValue(string[] value)
         {
-            this.strValue = value[1];
+            this.value = value[1];
         }
     }
 }// end namespace

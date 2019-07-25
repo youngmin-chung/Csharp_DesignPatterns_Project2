@@ -8,6 +8,7 @@
 
 using System;
 using System.Linq;
+using ConsoleClient;
 
 namespace INFO3137_Project2
 {
@@ -49,7 +50,7 @@ namespace INFO3137_Project2
 
             Branch branch = new Branch();
             Director myDirector = null;
-            bool isBool = false;
+            bool done = false;
 
             // call Usage()
             Usage();
@@ -70,7 +71,7 @@ namespace INFO3137_Project2
                     // close menu in Usage
                     else if (commandList[0].ToLower() == "close")
                     {
-                        if (isBool)
+                        if (done)
                         {
                             myDirector.CloseBranch();
                             Console.Write("> ");
@@ -83,7 +84,7 @@ namespace INFO3137_Project2
                     // print menu in Usage
                     else if (commandList[0].ToLower() == "print")
                     {
-                        if (isBool)
+                        if (done)
                         {
                             myDirector.Print();
                             Console.Write("> ");
@@ -114,13 +115,13 @@ namespace INFO3137_Project2
                         {
                             JSONBuilder json = new JSONBuilder();
                             myDirector = new Director(json);
-                            isBool = true;
+                            done = true;
                         }
                         else if (commandList[1].ToLower() == "xml")
                         {
                             XMLBuilder xml = new XMLBuilder();
                             myDirector = new Director(xml);
-                            isBool = true;
+                            done = true;
                         }
                         else
                         {
@@ -129,7 +130,7 @@ namespace INFO3137_Project2
                     }
                     else if (commandList[0].ToLower() == "branch")
                     {
-                        if (isBool)
+                        if (done)
                         {
                             branch.SetBranch(commandList);
                             myDirector.BuildBranch();
@@ -149,7 +150,7 @@ namespace INFO3137_Project2
                     Console.Write("> ");
                     if (commandList[0].ToLower() == "leaf")
                     {
-                        if (isBool)
+                        if (done)
                         {
                             branch.SetLeaf(commandList);
                             myDirector.BuildLeaf();
